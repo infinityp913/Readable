@@ -1,28 +1,44 @@
-const tesseract = import("node-tesseract-ocr");
+// const tesseract = import("node-tesseract-ocr");
 //Add event listener after the window has been loaded
 window.onload = loaded;
 
 //function to call when the window has been loaded
 function loaded(){
-  //add an event listener 
-  document.getElementById('read').addEventListener('click',startReading);
-  live();
-}
-console.log('whatever');
+//   //add an event listener 
+//   // document.getElementById('read').addEventListener('click',startReading);
+   live();
+ }
+  console.log('whatever');
 
 function live() {
-    const video = document.getElementById('livevid');
-    
-    window.navigator.mediaDevices.getUserMedia(constraint)
-    .then(stream => {
-        video.srcObject = stream;
-        video.onloadedmetadata = (e) => {
-            video.play();
+  const video = document.getElementById('livevid');
+  window.navigator.mediaDevices.getUserMedia(constraint)
+  .then(stream => {
+    video.srcObject = stream;
+    video.onloadedmetadata = (e) => {
+        video.play();
+
+        w = video.videoWidth;
+        h = video.videoHeight
+
+        canvas.width = w;
+        canvas.height = h;
         };
     })
+
     .catch( () => {
         alert('Camera permission required');
     });
+}
+
+
+function snapshot(){
+  var canvas = document.createElement('canvas');
+  var context = canvas.getContext("2d");
+  const video = document.getElementById('livevid');
+  context.drawImage(video, 0, 0, w, h);
+  var dataURI = canvas.toDataURL('image/jpeg');
+  localStorage.setItem("image", dataURI);
 }
 
 const constraint = 
@@ -36,26 +52,25 @@ const constraint =
         }
     }
 
-function startReading(){
-  //Get frame from camera feed
+// function startReading(){
+//   //Get frame from camera feed
 
-  //Analyse frame using tesseract
-  const config = {
-    lang: "eng",
-    oem: 1,
-    psm: 3,
-  }
-  let textData = ""
-  tesseract.recognize("image.jfif", config)
-    .then(text => {
-      console.log("Result:", text)
-      textData = text
-    })
-    .catch(error => {
-      console.log(error.message)
-      textData = "Sorry I didn't catch that."
-    })
+//   //Analyse frame using tesseract
+//   const config = {
+//     lang: "eng",
+//     oem: 1,
+//     psm: 3,
+//   }
+//   let textData = ""
+//   tesseract.recognize("image.jfif", config)
+//     .then(text => {
+//       console.log("Result:", text)
+//       textData = text
+//     })
+//     .catch(error => {
+//       console.log(error.message)
+//       textData = "Sorry I didn't catch that."
+//     })
 
-  //Generate audio based on the text
-
-}
+//   //Generate audio based on the text
+// }
