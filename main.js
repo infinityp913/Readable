@@ -1,23 +1,44 @@
-const tesseract = require("node-tesseract-ocr");
-
+const tesseract = import("node-tesseract-ocr");
 //Add event listener after the window has been loaded
 window.onload = loaded;
 
 //function to call when the window has been loaded
 function loaded(){
   //add an event listener 
-  document.getElementById('Read').addEventListener('click',startReading);
+  document.getElementById('read').addEventListener('click',startReading);
+  live();
+}
+console.log('whatever');
+
+function live() {
+    const video = document.getElementById('livevid');
+    
+    window.navigator.mediaDevices.getUserMedia(constraint)
+    .then(stream => {
+        video.srcObject = stream;
+        video.onloadedmetadata = (e) => {
+            video.play();
+        };
+    })
+    .catch( () => {
+        alert('Camera permission required');
+    });
 }
 
-
+const constraint = 
+    {
+        audio: false,
+        video: {
+            frameRate: { ideal: 10, max: 15 },
+            width: { ideal: 1280 },
+            height: { ideal: 720 },
+            facingMode: { ideal: "environment" }
+        }
+    }
 
 function startReading(){
   //Get frame from camera feed
 
-
-
-
-  
   //Analyse frame using tesseract
   const config = {
     lang: "eng",
@@ -38,5 +59,3 @@ function startReading(){
   //Generate audio based on the text
 
 }
-
-

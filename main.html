@@ -4,28 +4,12 @@
             Readable
         </title>
         <link href="main.css" rel="stylesheet">
+        <script src="main.js"></script>
     </head>
     <body>
-        <video id="Vid" controls muted autoplay></video>
+        <video id="livevid" controls muted autoplay></video>
+        <button id="read">
+            Read Text
+        </button>
     </body>
-    
-    <script type="text/javascript">
-        // const constraints = {
-        //         facingMode = {
-        //             ideal: "environment",
-        //         }
-        //     },
-
-        const video = document.querySelector('#Vid');
-            window.navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                video.srcObject = stream;
-                video.onloadedmetadata = (e) => {
-                    video.play();
-                };
-            })
-            .catch( () => {
-                alert('Camera permission required');
-            });
-    </script>
 </html>
