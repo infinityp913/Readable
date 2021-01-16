@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>
+            Readable
+        </title>
+        <link href="main.css" rel="stylesheet">
+    </head>
+    <body>
+        <video id="Vid" controls muted autoplay></video>
+    </body>
+    
+    <script type="text/javascript">
+        // const constraints = {
+        //         facingMode = {
+        //             ideal: "environment",
+        //         }
+        //     },
+
+        const video = document.querySelector('#Vid');
+            window.navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+                video.onloadedmetadata = (e) => {
+                    video.play();
+                };
+            })
+            .catch( () => {
+                alert('Camera permission required');
+            });
+    </script>
+</html>
