@@ -1,14 +1,20 @@
 // const tesseract = import("node-tesseract-ocr");
+
 //Add event listener after the window has been loaded
 window.onload = loaded;
 
 //function to call when the window has been loaded
 function loaded(){
-//   //add an event listener 
-//   // document.getElementById('read').addEventListener('click',startReading);
-   live();
- }
-  console.log('whatever');
+
+  // talkify config stuff
+  talkify.config.remoteService.host = 'https://talkify.net';
+  talkify.config.remoteService.apiKey = '558cecb3-7843-4ad6-b759-993123affadc';
+  talkify.config.ui.audioControls.enabled = false;
+  //add an event listener 
+  document.getElementById('read').addEventListener('click',startReading);
+  live();
+}
+console.log('whatever');
 
 function live() {
   const video = document.getElementById('livevid');
@@ -55,6 +61,7 @@ const constraint =
 // function startReading(){
 //   //Get frame from camera feed
 
+<<<<<<< HEAD
 //   //Analyse frame using tesseract
 //   const config = {
 //     lang: "eng",
@@ -74,3 +81,11 @@ const constraint =
 
 //   //Generate audio based on the text
 // }
+=======
+  //Generate audio based on the text
+  const player = new talkify.TtsPlayer()
+  .forceVoice({name: "Zira"});
+  player.setRate(-1);
+  player.playText(textData);
+}
+>>>>>>> 5b0118ee33b6db2f6118d97e71138706ed2b602d
