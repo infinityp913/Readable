@@ -1,3 +1,32 @@
 .body {
-    background-image: linear-gradient(#99d2e0 0%, #ffd1ff 100%);
+    background-color:beige;
+}
+
+#video-wrapper {
+    width: 70%;
+    overflow:hidden;
+    height: 70%;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+}
+
+#video {
+    object-fit: cover;
+}
+
+#read {
+    margin: 0 auto;
+    backdrop-filter: blur(7px);
+}
+
+#button-wrapper{
+    padding: 10px 10px;
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    position: relative
 }
