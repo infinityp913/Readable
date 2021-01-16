@@ -58,34 +58,29 @@ const constraint =
         }
     }
 
-// function startReading(){
-//   //Get frame from camera feed
+function startReading(){
+////Get frame from camera feed
 
-<<<<<<< HEAD
-//   //Analyse frame using tesseract
-//   const config = {
-//     lang: "eng",
-//     oem: 1,
-//     psm: 3,
-//   }
-//   let textData = ""
-//   tesseract.recognize("image.jfif", config)
-//     .then(text => {
-//       console.log("Result:", text)
-//       textData = text
-//     })
-//     .catch(error => {
-//       console.log(error.message)
-//       textData = "Sorry I didn't catch that."
-//     })
+  //Analyse frame using tesseract
+  const config = {
+    lang: "eng",
+    oem: 1,
+    psm: 3,
+  }
+  let textData = ""
+  tesseract.recognize("image.jfif", config)
+    .then(text => {
+      console.log("Result:", text)
+      textData = text
+    })
+    .catch(error => {
+      console.log(error.message)
+      textData = "Sorry I didn't catch that."
+    })
 
-//   //Generate audio based on the text
-// }
-=======
   //Generate audio based on the text
   const player = new talkify.TtsPlayer()
   .forceVoice({name: "Zira"});
   player.setRate(-1);
   player.playText(textData);
 }
->>>>>>> 5b0118ee33b6db2f6118d97e71138706ed2b602d
