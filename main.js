@@ -1,9 +1,17 @@
 const tesseract = import("node-tesseract-ocr");
+
+
+
 //Add event listener after the window has been loaded
 window.onload = loaded;
 
 //function to call when the window has been loaded
 function loaded(){
+
+  // talkify config stuff
+  talkify.config.remoteService.host = 'https://talkify.net';
+  talkify.config.remoteService.apiKey = '558cecb3-7843-4ad6-b759-993123affadc';
+  talkify.config.ui.audioControls.enabled = false;
   //add an event listener 
   document.getElementById('read').addEventListener('click',startReading);
   live();
@@ -57,5 +65,8 @@ function startReading(){
     })
 
   //Generate audio based on the text
-
+  const player = new talkify.TtsPlayer()
+  .forceVoice({name: "Zira"});
+  player.setRate(-1);
+  player.playText(textData);
 }
