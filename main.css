@@ -1,7 +1,3 @@
-.body {
-    background-color:#f0ddbe;
-}
-
 #video-wrapper {
     width: 100vw;
     overflow: hidden;
@@ -10,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
+    background-color:#f0ddbe;
 }
 
 #video {
