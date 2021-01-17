@@ -59,7 +59,7 @@ const constraint =
     }
 
 function startReading(){
-////Get frame from camera feed
+  //Get frame from camera feed
 
   //Analyse frame using tesseract
   const config = {

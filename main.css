@@ -15,7 +15,7 @@
 
 #read {
     margin: 0 auto;
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(10px);
 }
 
 #button-wrapper{
