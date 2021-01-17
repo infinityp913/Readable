@@ -1,0 +1,24 @@
+{
+  "name": "readable",
+  "version": "1.0.0",
+  "description": "*For Windows:\r         * [Installer Here] (https://github.com/UB-Mannheim/tesseract/wiki)\r     *For Ubuntu\r         * apt-get install tesseract-ocr",
+  "main": "main.js",
+  "dependencies": {
+    "node-tesseract-ocr": "^2.0.0",
+    "talkify-tts": "^3.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infinityp913/Readable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infinityp913/Readable/issues"
+  },
+  "homepage": "https://github.com/infinityp913/Readable#readme"
+}

@@ -9,7 +9,7 @@ function loaded(){
   // talkify config stuff
   talkify.config.remoteService.host = 'https://talkify.net';
   talkify.config.remoteService.apiKey = '558cecb3-7843-4ad6-b759-993123affadc';
-  talkify.config.ui.audioControls.enabled = false;
+  talkify.config.ui.audioControls.enabled = true;
   //add an event listener 
   document.getElementById('read').addEventListener('click',startReading);
   live();
