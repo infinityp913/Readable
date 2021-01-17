@@ -39,7 +39,7 @@
 
 h2 {
     position: relative;
-    padding-top: 8vh;
+    padding-top: 2vh;
 }
 
 h3 {
@@ -47,3 +47,11 @@ h3 {
     position: relative;
 }
 
+.audio {
+    padding-bottom: 2vh;
+    position: relative;
+}
+
+audio::-webkit-media-controls-panel{
+    background-color: #f0ddbe;
+}

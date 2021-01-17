@@ -62,25 +62,28 @@ function startReading(){
   //Get frame from camera feed
 
   //Analyse frame using tesseract
-  const config = {
-    lang: "eng",
-    oem: 1,
-    psm: 3,
-  }
-  let textData = ""
-  tesseract.recognize("image.jfif", config)
-    .then(text => {
-      console.log("Result:", text)
-      textData = text
-    })
-    .catch(error => {
-      console.log(error.message)
-      textData = "Sorry I didn't catch that."
-    })
+  // const config = {
+  //   lang: "eng",
+  //   oem: 1,
+  //   psm: 3,
+  // }
+  // let textData = ""
+  // tesseract.recognize("image.jfif", config)
+  //   .then(text => {
+  //     console.log("Result:", text)
+  //     textData = text
+  //   })
+  //   .catch(error => {
+  //     console.log(error.message)
+  //     textData = "Sorry I didn't catch that."
+  //   })
 
   //Generate audio based on the text
   const player = new talkify.TtsPlayer()
   .forceVoice({name: "Zira"});
   player.setRate(-1);
-  player.playText(textData);
+  player.playText("Hello world");
+  const audio = document.getElementById("talkify-audio");
+  audio.classList.add("audio");
+  document.getElementById('audio-wrapper').appendChild(audio);
 }
