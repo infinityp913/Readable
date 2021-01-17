@@ -66,6 +66,7 @@ app.post('/get_text', function(req, res){
     
 });
 
+const port = process.env.PORT || 8080;    
 
 
-app.listen(5050);
+app.listen(port);
