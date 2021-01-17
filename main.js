@@ -1,4 +1,4 @@
-// const tesseract = import("node-tesseract-ocr");
+// const tesseract = require("node-tesseract-ocr");
 
 //Add event listener after the window has been loaded
 window.onload = loaded;
@@ -13,6 +13,7 @@ function loaded(){
   //add an event listener 
   document.getElementById('read').addEventListener('click',startReading);
   live();
+
 }
 console.log('whatever');
 
@@ -60,7 +61,8 @@ const constraint =
 
 function startReading(){
 ////Get frame from camera feed
-
+  snapshot();
+  console.log('called');
   //Analyse frame using tesseract
   const config = {
     lang: "eng",
