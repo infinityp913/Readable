@@ -106,5 +106,8 @@ async function startReading(){
   const player = new talkify.TtsPlayer()
   .forceVoice({name: "Zira"});
   player.setRate(-1);
-  player.playText(textData);
+  player.playText("Hello world");
+  const audio = document.getElementById("talkify-audio");
+  audio.classList.add("audio");
+  document.getElementById('audio-wrapper').appendChild(audio);
 }
