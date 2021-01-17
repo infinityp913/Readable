@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.text();
 app.use(jsonParser);
 const fs = require('fs');
+app.use(express.limit(1000000000));
 
 //From github repo that converts data-uri to image
 const ImageDataURI = require('image-data-uri');
@@ -17,13 +18,6 @@ const config = {
   oem: 1,
   psm: 3,
 };
-
-tesseract.recognize("image.png", config).then(text => {
-    console.log("Result:", text)
-  })
-  .catch(error => {
-    console.log(error.message)
-  });
 
 app.get('/', function(req, res){
     res.sendFile(path.resolve('../index.html'));
@@ -52,19 +46,23 @@ function convertAndSave(dataURI, filepath){
 }
 
 app.post('/get_text', function(req, res){
-    console.log(req.body);
     // convertAndSave(req.body, 'image.png');
-    ImageDataURI.outputFile(req.body, 'image.jpeg');
+    ImageDataURI.outputFile(req.body, 'image.png');
     // fs.writeFileSync('tmp/myfile.png', new Buffer(req.body, 'base64'));
-    tesseract.recognize("image.jpeg", config).then(text => {
+    output = "";
+    tesseract.recognize("image.png", config).then(text => {
+      output = text;
+      console.log(output.length);
+      res.writeHead(200, {'ContentType':'text/plain'});
+      res.write(output);
+      res.end();
+
       console.log("Result:", text)
     })
     .catch(error => {
       console.log(error.message)
     });
-    res.writeHead(200, {'ContentType':'text/plain'});
-    res.write('text_exmaple');
-    res.end();
+    
 });
 
 

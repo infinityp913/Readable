@@ -25,13 +25,12 @@ function live() {
     video.srcObject = stream;
     video.onloadedmetadata = (e) => {
         video.play();
-        console.log("vidoe's"+video.videoWidth+" "+video.videoHeight);
-        console.log(w+" "+h);
+
         w = video.videoWidth;
         h = video.videoHeight;
-        console.log(w+" "+h);
-        canvas.width = w;
-        canvas.height = h;
+        // console.log(w+" "+h);
+        // canvas.width = w;
+        // canvas.height = h;
         };
     })
 
@@ -45,12 +44,14 @@ function snapshot(){
   const canvas = document.createElement('canvas');
   const context = canvas.getContext("2d");
   const video = document.getElementById('livevid');
-  console.log("vidoe's"+video.videoWidth+" "+video.videoHeight);
-  console.log(w+" "+h);
-  context.drawImage(video, 0, 0, w, h);
-  const dataURI = canvas.toDataURL('image/jpeg');
-  // localStorage.setItem("image", dataURI);
-  // const blob = canvas.toBlob(); 
+
+  canvas.width = w;
+  canvas.height = h;
+
+  context.drawImage(video,0,0, canvas.width, canvas.height);
+  // context.drawImage(video,0,0, canvas.naturalWidth, canvas.naturalHeight);
+  const dataURI = canvas.toDataURL('image/png', quality=0.9);
+
   return dataURI;
 }
 
@@ -67,7 +68,6 @@ const constraint =
 
 //function to return the image text
 async function getText(dataURI){
-  console.log(dataURI);
   const response = await fetch('/get_text',{method:'POST', headers:{'ContentType':'application/json'}, body:dataURI});
   if (response.ok){
     const json = await response.text();
@@ -78,15 +78,16 @@ async function getText(dataURI){
 async function startReading(){
   //Get frame from camera feed
   const uri = snapshot();
-
+  console.log(uri);
   //Analyse frame using tesseract
   const config = {
     lang: "eng",
     oem: 1,
     psm: 3,
   }
-  const textData = await (async()=>getText(uri))();
+  let textData = await (async()=>getText(uri))();
   console.log(textData);
+  console.log(textData.length);
   // tesseract.recognize("image.jfif", config)
   //   .then(text => {
   //     console.log("Result:", text)
@@ -97,6 +98,10 @@ async function startReading(){
   //     textData = "Sorry I didn't catch that."
   //   })
 
+  if(textData === ""){
+    console.log('No text found.');
+    textData = "Sorry I didn't catch that";
+  }
   //Generate audio based on the text
   const player = new talkify.TtsPlayer()
   .forceVoice({name: "Zira"});
