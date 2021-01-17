@@ -5,9 +5,9 @@ app.use(express.static(__dirname ));
 const tesseract = require("node-tesseract-ocr");
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.text();
-app.use(jsonParser);
+// app.use(jsonParser);
 const fs = require('fs');
-app.use(express.limit(1000000000));
+app.use(bodyParser.text({ limit: "50mb" }))
 
 //From github repo that converts data-uri to image
 const ImageDataURI = require('image-data-uri');
@@ -47,10 +47,11 @@ function convertAndSave(dataURI, filepath){
 
 app.post('/get_text', function(req, res){
     // convertAndSave(req.body, 'image.png');
-    ImageDataURI.outputFile(req.body, 'image.png');
+    console.log('here')
+    ImageDataURI.outputFile(req.body, 'image.jpeg');
     // fs.writeFileSync('tmp/myfile.png', new Buffer(req.body, 'base64'));
     output = "";
-    tesseract.recognize("image.png", config).then(text => {
+    tesseract.recognize("image.jpeg", config).then(text => {
       output = text;
       console.log(output.length);
       res.writeHead(200, {'ContentType':'text/plain'});
@@ -67,4 +68,4 @@ app.post('/get_text', function(req, res){
 
 
 
-app.listen(8080);
+app.listen(5050);

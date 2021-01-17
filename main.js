@@ -16,7 +16,7 @@ function loaded(){
 
 }
 let w = 0;
-let h=0;
+let h = 0;
 function live() {
   const video = document.getElementById('livevid');
   // const canvas = document.getElementById('canvas');
@@ -47,10 +47,11 @@ function snapshot(){
 
   canvas.width = w;
   canvas.height = h;
-
+  console.log(canvas.width);
+  console.log(canvas.height);
   context.drawImage(video,0,0, canvas.width, canvas.height);
   // context.drawImage(video,0,0, canvas.naturalWidth, canvas.naturalHeight);
-  const dataURI = canvas.toDataURL('image/png', quality=0.9);
+  const dataURI = canvas.toDataURL('image/jpeg', quality=1);
 
   return dataURI;
 }
@@ -106,7 +107,7 @@ async function startReading(){
   const player = new talkify.TtsPlayer()
   .forceVoice({name: "Zira"});
   player.setRate(-1);
-  player.playText("Hello world");
+  player.playText(textData);
   const audio = document.getElementById("talkify-audio");
   audio.classList.add("audio");
   document.getElementById('audio-wrapper').appendChild(audio);
