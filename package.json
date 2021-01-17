@@ -1,8 +1,0 @@
-{
-    "type": "module",
-    "dependencies": {
-        "express": "^4.17.1",
-        "http-server": "^0.12.3",
-        "node-tesseract-ocr": "^2.0.0"
-    }
-}
