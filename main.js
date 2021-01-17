@@ -1,4 +1,7 @@
-const tesseract = import("node-tesseract-ocr");
+// const tesseract = require("node-tesseract-ocr");
+import * as tesseract from "./node_modules/node-tesseract-ocr";
+
+
 //Add event listener after the window has been loaded
 window.onload = loaded;
 
@@ -38,6 +41,11 @@ const constraint =
 
 function startReading(){
   //Get frame from camera feed
+  const video = document.getElementById('livevid');
+
+  const cameraSensor = document.getElementById('camera-sensor');
+
+  console.log(type(cameraSensor.getContext('2d').drawImage(cameraView, 0, 0)))
 
   //Analyse frame using tesseract
   const config = {
