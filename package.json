@@ -1,8 +1,36 @@
 {
+<<<<<<< HEAD
     "type": "module",
     "dependencies": {
         "express": "^4.17.1",
         "http-server": "^0.12.3",
         "node-tesseract-ocr": "^2.0.0"
     }
+=======
+  "name": "readable",
+  "version": "1.0.0",
+  "description": "*For Windows:\r         * [Installer Here] (https://github.com/UB-Mannheim/tesseract/wiki)\r     *For Ubuntu\r         * apt-get install tesseract-ocr",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "image-data-uri": "^2.0.1",
+    "node-tesseract-ocr": "^2.0.0",
+    "talkify-tts": "^3.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infinityp913/Readable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/infinityp913/Readable/issues"
+  },
+  "homepage": "https://github.com/infinityp913/Readable#readme"
+>>>>>>> image-to-text
 }
