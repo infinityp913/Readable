@@ -1,4 +1,3 @@
-// const tesseract = require("node-tesseract-ocr");
 
 
 //Add event listener after the window has been loaded
